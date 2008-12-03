@@ -5,7 +5,6 @@ package Data::Rx::Type::PCRE;
 # ABSTRACT: PCRE string checking for Rx (experimental)
 
 use Carp ();
-use Moose::Util::TypeConstraints ();
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,8 @@
 Revision history for Data-Rx-Type-PCRE
 
+0.002     2008-12-03
+          remove spurious loading of a Moose class
+
 0.001     2008-10-04
           first revision
 
