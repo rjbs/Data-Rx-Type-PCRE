@@ -1,6 +1,8 @@
 Revision history for Data-Rx-Type-PCRE
 
 {{$NEXT}}
+
+0.003     2012-09-18 11:06:18 America/New_York
           update for Data::Rx 0.200000
 
 0.002     2008-12-03
