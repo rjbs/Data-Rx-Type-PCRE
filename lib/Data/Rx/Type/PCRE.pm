@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use 5.010;
 package Data::Rx::Type::PCRE;
+use parent 'Data::Rx::CommonType::EasyNew';
+
 # ABSTRACT: PCRE string checking for Rx (experimental)
 
 use Carp ();
@@ -41,8 +43,9 @@ modifier.
 
 sub type_uri { 'tag:rjbs.manxome.org,2008-10-04:rx/pcre/str' }
 
-sub new_checker {
-  my ($class, $arg, $rx) = @_;
+sub guts_from_arg {
+  my ($class, $arg, $rx, $type) = @_;
+    $arg ||= {};
 
   my $regex = $arg->{regex};
   my $flags = $arg->{flags} // '';
@@ -56,16 +59,24 @@ sub new_checker {
     qr{$regex_str};
   };
 
-  my $self = { re => $re };
-  bless $self => $class;
-
-  return $self;
+  return {
+    re     => $re,
+    re_str => $regex_str,
+  };
 }
 
-sub check {
+sub assert_valid {
   my ($self, $value) = @_;
 
-  return unless $value =~ $self->{re};
+  unless ($value =~ $self->{re}) {
+    $self->fail({
+      error   => [ qw(value) ],
+      # we should pick better delimiters -- rjbs, 2012-09-18
+      message => "found value does not match /$self->{re_str}/",
+      value   => $value,
+    });
+  }
+
   return 1;
 }
 

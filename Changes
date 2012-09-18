@@ -1,5 +1,8 @@
 Revision history for Data-Rx-Type-PCRE
 
+{{$NEXT}}
+          update for Data::Rx 0.200000
+
 0.002     2008-12-03
           remove spurious loading of a Moose class
 
