@@ -1,6 +1,8 @@
 Revision history for Data-Rx-Type-PCRE
 
 {{$NEXT}}
+        - update author contact info
+        - document perl version policy
 
 0.005     2013-12-22 21:59:16-0500 America/New_York
           update github links
